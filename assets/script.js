@@ -22,6 +22,9 @@ var generatePassword = function() {//returning the password -- example: return "
 
   getPasswordLength();
   getUppercase();
+  getLowercase();
+  getNumbers();
+  getSpecial();
 }
 
 var getPasswordLength = function() {
@@ -57,6 +60,56 @@ var getUppercase = function() {
   }
 }
 
+var getLowercase = function() {
+  //asks if they'd like lowercase letters in password, yes or no
+  var lowercaseQuestion = prompt("Would you like lowercase letters in your password?\n\n Please type 'YES' or 'NO'");
+  lowercaseQuestion = lowercaseQuestion.toLowerCase();
+  //if yes, window alert says lowercase letters has been added
+  if (lowercaseQuestion === "yes") {
+    alert("Lowercase letters have been added to your password.");
+    //if no, window alert says lowercase letters haven't been added
+  } else if (lowercaseQuestion === "no") {
+    alert("Lowercase letters have not been added to your password.");
+    //if it isn't no or yes entered, it says try again and calls the function
+  } else {
+    alert("Invalid entry. Please try again.");
+    getLowercase();
+  }
+}
+
+var getNumbers = function() {
+  //asks if they'd like numbers in password, yes or no
+  var numberQuestion = prompt("Would you like numbers in your password?\n\n Please type 'YES' or 'NO'");
+  numberQuestion = numberQuestion.toLowerCase();
+  //if yes, window alert says numbers has been added
+  if (numberQuestion === "yes") {
+    alert("Numbers have been added to your password.");
+    //if no, window alert says numbers haven't been added
+  } else if (lowercaseQuestion === "no") {
+    alert("Numbers have not been added to your password.");
+    //if it isn't no or yes entered, it says try again and calls the function
+  } else {
+    alert("Invalid entry. Please try again.");
+    getNumbers();
+  }
+}
+
+var getSpecial = function() {
+  //asks if they'd like special characters in password, yes or no
+  var specialQuestion = prompt("Would you like special characters in your password?\n\n Please type 'YES' or 'NO'");
+  specialQuestion = specialQuestion.toLowerCase();
+  //if yes, window alert says special characters has been added
+  if (specialQuestion === "yes") {
+    alert("special characters have been added to your password.");
+    //if no, window alert says special characters haven't been added
+  } else if (lowercaseQuestion === "no") {
+    alert("special characters have not been added to your password.");
+    //if it isn't no or yes entered, it says try again and calls the function
+  } else {
+    alert("Invalid entry. Please try again.");
+    getSpecial();
+  }
+}
 /**
  * PSUEDOCODE
  * user clicks on the generate password button, gets a greeting
