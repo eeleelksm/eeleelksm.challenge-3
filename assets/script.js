@@ -23,13 +23,13 @@ var generatePassword = function() {//returning the password
   var passwordLength = parseInt(passwordLength);
 
   if (passwordLength >= 8 && passwordLength <= 128) {
-    alert("Your password is " + lengthQuestion + " characters long.");
+    alert("Your password is " + passwordLength + " characters long.");
   } 
 
-  // if (!passwordLength) {
-  //   alert("Invalid entry. Try again.");
-  // }
-  //  if (!passwordLength) { //checking to see if it's false
+  else if (!passwordLength) { //checking to see if it's false
+    alert("Invalid entry. Try again.");
+    passwordLength;
+  }
 }
 
 
