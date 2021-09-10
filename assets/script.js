@@ -25,6 +25,8 @@ var generatePassword = function() {//returning the password -- example: return "
   getLowercase();
   getNumbers();
   getSpecial();
+
+  alert("Your password has been generated.");
 }
 
 var getPasswordLength = function() {
@@ -85,7 +87,7 @@ var getNumbers = function() {
   if (numberQuestion === "yes") {
     alert("Numbers have been added to your password.");
     //if no, window alert says numbers haven't been added
-  } else if (lowercaseQuestion === "no") {
+  } else if (numberQuestion === "no") {
     alert("Numbers have not been added to your password.");
     //if it isn't no or yes entered, it says try again and calls the function
   } else {
@@ -102,14 +104,37 @@ var getSpecial = function() {
   if (specialQuestion === "yes") {
     alert("special characters have been added to your password.");
     //if no, window alert says special characters haven't been added
-  } else if (lowercaseQuestion === "no") {
-    alert("special characters have not been added to your password.");
+  } else if (specialQuestion === "no") {
+    alert("Special characters have not been added to your password.");
     //if it isn't no or yes entered, it says try again and calls the function
   } else {
     alert("Invalid entry. Please try again.");
     getSpecial();
   }
 }
+
+/**HELP -- iterating through the variables to get final password
+ * 
+ * var getPassword = function() {
+ * let pwComplete = "";
+ * var pwUppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+ * var pwLowercase = "abcdefghijklmnopqrstuvwxyz";
+ * var pwNumbers = '0123456789';
+ * var pwSpecial = "!#$%&'()*+,-./:;<=>?@[^_`{|}~"";
+ * 
+ * var ?? = pwUppercase[Math.floor(Math.random() * lengthQuestion.length)]
+ * var ?? = pwLowercase[Math.floor(Math.random() * lengthQuestion.length)]
+ * var ?? = pwNumbers[Math.floor(Math.random() * lengthQuestion.length)]
+ * var ?? = pwSpecial[Math.floor(Math.random() * lengthQuestion.length)]
+ * 
+ * for(let i = 0; i <lengthQuestion.length; i++ {
+ *  pwComplete += pwUppercase.charAt(Math.floor(Math.random() * lengthQuestion.length)
+ *  );
+ * }
+ * return pwComplete;
+ * 
+ */
+
 /**
  * PSUEDOCODE
  * user clicks on the generate password button, gets a greeting
@@ -136,8 +161,3 @@ var getSpecial = function() {
  * generatePassword then prints the generated password into the textarea
  */
 
-//   var passwordComplete = "";
-//   var selectUppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-//   var selectLowercase = "abcdefghijklmnopqrstuvwxyz";
-//   var selectNumbers = '0123456789';
-//   var selectSpecial = "!#$%&'()*+,-./:;<=>?@[^_`{|}~"";
