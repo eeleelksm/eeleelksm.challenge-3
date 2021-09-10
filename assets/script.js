@@ -14,23 +14,26 @@ generateBtn.addEventListener("click", writePassword);
 //when someone clicks button, run the writePassword function
 
 
-var generatePassword = function() {//returning the password
-  // return "superSecretPassword"; //prints in the textarea
+var generatePassword = function() {//returning the password -- example: return "superSecretPassword"; //prints in the textarea
+  //user clicks on the generate password button, gets a greeting
   document.getElementById("generate").innerHTML=
   alert("Welcome to the Password Generator!");
   
-  var passwordLength = prompt("How many characters would you like in your password? Choose a length of at least 8 characters and no more than 128 characters.");
-  var passwordLength = parseInt(passwordLength);
+  //window prompt asks how many characters for the password
+  //window mentions must be between 8 and 128 characters
+  var lengthQuestion = prompt("How many characters would you like in your password? Choose a length of at least 8 characters and no more than 128 characters.");
+  var passwordLength = parseInt(lengthQuestion);
 
-  if (passwordLength >= 8 && passwordLength <= 128) {
-    alert("Your password is " + passwordLength + " characters long.");
-  } 
-
-  else if (!passwordLength) { //checking to see if it's false
-    alert("Invalid entry. Try again.");
-    passwordLength;
+  //if passwordLength is 8-128 and a number, window tells you # of characters
+  //if passwordLength does not follow this, alert message to try again
+  if (passwordLength >= 8 && passwordLength <= 128 && (Number.isInteger(passwordLength))) {
+    alert("Your password is " + passwordLength + " characters long.");  
+  } else { 
+    alert("Invalid entry. Please try again.");
+    lengthQuestion;
   }
 }
+  
 
 
 /**
