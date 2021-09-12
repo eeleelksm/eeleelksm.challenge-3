@@ -62,6 +62,14 @@ var generatePassword = function() {
       generatePassword();
   };
 
+  if (uppercaseQuestion === null && 
+  lowercaseQuestion === null &&
+  numberQuestion === null &&
+  specialQuestion === null) {
+  alert("You must select a choice of characters for your password.\n Please try again.");
+  generatePassword();
+};
+
   //based on the user's length choice, goes through each array to "push" the random
   //selections into an empty set
   for (var i = 0; i < passwordLength; i++) {
@@ -93,72 +101,80 @@ var getPasswordLength = function() {
 var getUppercase = function() {
   //asks if they'd like uppercase letters in password, yes or no
   uppercaseQuestion = prompt("Would you like uppercase letters in your password?\n Please type 'YES' or 'NO'");
+  
+  if (uppercaseQuestion) {
   uppercaseQuestion = uppercaseQuestion.toLowerCase();
-
   //if yes, window alert says uppercase letters has been added
-  if (uppercaseQuestion === "yes") {
-    alert("Uppercase letters have been added to your password.");
-    //if no, window alert says uppercase letters haven't been added
-  } else if (uppercaseQuestion === "no") {
-    alert("Uppercase letters have not been added to your password.");
-    // if it isn't no or yes entered, it says try again and calls the function
-  } else { 
-    alert("Invalid entry. Please try again.");
-    getUppercase();
+    if (uppercaseQuestion === "yes") {
+      alert("Uppercase letters have been added to your password.");
+      //if no, window alert says uppercase letters haven't been added
+    } else if (uppercaseQuestion === "no") {
+      alert("Uppercase letters have not been added to your password.");
+      // if it isn't no or yes entered, it says try again and calls the function
+    } else { 
+      alert("Invalid entry. Please try again.");
+      getUppercase();
+    }
   }
 }
 
 var getLowercase = function() {
   //asks if they'd like lowercase letters in password, yes or no
   lowercaseQuestion = prompt("Would you like lowercase letters in your password?\n Please type 'YES' or 'NO'");
-  lowercaseQuestion = lowercaseQuestion.toLowerCase();
-
-  //if yes, window alert says lowercase letters has been added
-  if (lowercaseQuestion === "yes") {
-    alert("Lowercase letters have been added to your password.");
-    //if no, window alert says lowercase letters haven't been added
-  } else if (lowercaseQuestion === "no") {
-    alert("Lowercase letters have not been added to your password.");
-    //if it isn't no or yes entered, it says try again and calls the function
-  } else {
-    alert("Invalid entry. Please try again.");
-    getLowercase();
+  
+  if (lowercaseQuestion) {
+    lowercaseQuestion = lowercaseQuestion.toLowerCase();
+    //if yes, window alert says lowercase letters has been added
+    if (lowercaseQuestion === "yes") {
+      alert("Lowercase letters have been added to your password.");
+      //if no, window alert says lowercase letters haven't been added
+    } else if (lowercaseQuestion === "no") {
+      alert("Lowercase letters have not been added to your password.");
+      //if it isn't no or yes entered, it says try again and calls the function
+    } else {
+      alert("Invalid entry. Please try again.");
+      getLowercase();
+    }
   }
 }
 
 var getNumbers = function() {
   //asks if they'd like numbers in password, yes or no
   numberQuestion = prompt("Would you like numbers in your password?\n Please type 'YES' or 'NO'");
-  numberQuestion = numberQuestion.toLowerCase();
-
-  //if yes, window alert says numbers has been added
-  if (numberQuestion === "yes") {
-    alert("Numbers have been added to your password.");
-    //if no, window alert says numbers haven't been added
-  } else if (numberQuestion === "no") {
-    alert("Numbers have not been added to your password.");
-    //if it isn't no or yes entered, it says try again and calls the function
-  } else {
-    alert("Invalid entry. Please try again.");
-    getNumbers();
+  
+  if (numberQuestion) {
+    numberQuestion = numberQuestion.toLowerCase();
+    //if yes, window alert says numbers has been added
+    if (numberQuestion === "yes") {
+      alert("Numbers have been added to your password.");
+      //if no, window alert says numbers haven't been added
+    } else if (numberQuestion === "no") {
+      alert("Numbers have not been added to your password.");
+      //if it isn't no or yes entered, it says try again and calls the function
+    } else {
+      alert("Invalid entry. Please try again.");
+      getNumbers();
+    }
   }
 }
 
 var getSpecial = function() {
   //asks if they'd like special characters in password, yes or no
   specialQuestion = prompt("Would you like special characters in your password?\n Please type 'YES' or 'NO'");
-  specialQuestion = specialQuestion.toLowerCase();
-
-  //if yes, window alert says special characters has been added
-  if (specialQuestion === "yes") {
-    alert("Special characters have been added to your password.");
-    //if no, window alert says special characters haven't been added
-  } else if (specialQuestion === "no") {
-    alert("Special characters have not been added to your password.");
-    //if it isn't no or yes entered, it says try again and calls the function
-  } else {
-    alert("Invalid entry. Please try again.");
-    getSpecial();
+  
+  if (specialQuestion) {
+    specialQuestion = specialQuestion.toLowerCase();
+    //if yes, window alert says special characters has been added
+    if (specialQuestion === "yes") {
+      alert("Special characters have been added to your password.");
+      //if no, window alert says special characters haven't been added
+    } else if (specialQuestion === "no") {
+      alert("Special characters have not been added to your password.");
+      //if it isn't no or yes entered, it says try again and calls the function
+    } else {
+      alert("Invalid entry. Please try again.");
+      getSpecial();
+    }
   }
 }
 
