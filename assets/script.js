@@ -13,7 +13,19 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 //when someone clicks button, run the writePassword function
 
-  
+allUppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+allLowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+allNumbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+allSpecial = ["!", "#", "$", "%", "&", "()", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "^", ":", "_", "`", "{", "|", "}", "~"];
+
+var getPassword = [];
+var lengthQuestion;
+var uppercaseQuestion;
+var lowercaseQuestion;
+var numberQuestion;
+var specialQuestion;
+var userPick;
+
 
 var generatePassword = function() {//returning the password -- example: return "superSecretPassword"; //prints in the textarea
   //user clicks on the generate password button, gets a greeting
@@ -26,13 +38,24 @@ var generatePassword = function() {//returning the password -- example: return "
   getNumbers();
   getSpecial();
 
-  alert("Your password has been generated.");
+  if (uppercaseQuestion === "yes" && 
+      lowercaseQuestion === "yes" &&
+      numberQuestion === "yes" &&
+      specialQuestion === "yes") {
+        userPick = allUppercase.concat(allLowercase, allNumbers, allSpecial);
+  }
+
+  for (var i = 0; i <= lengthQuestion.length; i++) {
+    var finaluserPick = userPick[Math.floor(Math.random() * userPick.length)]
+    getPassword.push(finaluserPick);
+  }
+  return getPassword;
 }
 
 var getPasswordLength = function() {
   //window prompt asks how many characters for the password
   //window mentions must be between 8 and 128 characters
-  var lengthQuestion = prompt("How many characters would you like in your password? Choose a length of at least 8 characters and no more than 128 characters.");
+  lengthQuestion = prompt("How many characters would you like in your password? Choose a length of at least 8 characters and no more than 128 characters.");
   passwordLength = parseInt(lengthQuestion);
 
   //if passwordLength is 8-128 and a number, window tells you # of characters
@@ -47,7 +70,7 @@ var getPasswordLength = function() {
 
 var getUppercase = function() {
   //asks if they'd like uppercase letters in password, yes or no
-  var uppercaseQuestion = prompt("Would you like uppercase letters in your password?\n\n Please type 'YES' or 'NO'");
+  uppercaseQuestion = prompt("Would you like uppercase letters in your password?\n\n Please type 'YES' or 'NO'");
   uppercaseQuestion = uppercaseQuestion.toLowerCase();
   //if yes, window alert says uppercase letters has been added
   if (uppercaseQuestion === "yes") {
@@ -64,7 +87,7 @@ var getUppercase = function() {
 
 var getLowercase = function() {
   //asks if they'd like lowercase letters in password, yes or no
-  var lowercaseQuestion = prompt("Would you like lowercase letters in your password?\n\n Please type 'YES' or 'NO'");
+  lowercaseQuestion = prompt("Would you like lowercase letters in your password?\n\n Please type 'YES' or 'NO'");
   lowercaseQuestion = lowercaseQuestion.toLowerCase();
   //if yes, window alert says lowercase letters has been added
   if (lowercaseQuestion === "yes") {
@@ -81,7 +104,7 @@ var getLowercase = function() {
 
 var getNumbers = function() {
   //asks if they'd like numbers in password, yes or no
-  var numberQuestion = prompt("Would you like numbers in your password?\n\n Please type 'YES' or 'NO'");
+  numberQuestion = prompt("Would you like numbers in your password?\n\n Please type 'YES' or 'NO'");
   numberQuestion = numberQuestion.toLowerCase();
   //if yes, window alert says numbers has been added
   if (numberQuestion === "yes") {
@@ -98,11 +121,11 @@ var getNumbers = function() {
 
 var getSpecial = function() {
   //asks if they'd like special characters in password, yes or no
-  var specialQuestion = prompt("Would you like special characters in your password?\n\n Please type 'YES' or 'NO'");
+  specialQuestion = prompt("Would you like special characters in your password?\n\n Please type 'YES' or 'NO'");
   specialQuestion = specialQuestion.toLowerCase();
   //if yes, window alert says special characters has been added
   if (specialQuestion === "yes") {
-    alert("special characters have been added to your password.");
+    alert("Special characters have been added to your password.");
     //if no, window alert says special characters haven't been added
   } else if (specialQuestion === "no") {
     alert("Special characters have not been added to your password.");
@@ -113,16 +136,40 @@ var getSpecial = function() {
   }
 }
 
+// var getPassword = function() {
+//  functionname = functionnames[Math.floor(Math.random() * lengthQuestion.length)]
+//  let character;
+//  switch (functionname) {}
+
+ // if (let i = 0; i <lengthQuestion.length; i++ {
+  
+//   functionnames =[] //make global
+//   functionname = functionnames[Math.floor(Math.random() * lengthQuestion.length)];
+//   let character;
+//   switch (functionname) {
+//     case "generateUppercase":
+//       character = generateUppercase();
+//       break;
+//     case "generateLowercase":
+//       character = generateLowercase();
+//       break;
+//     case "generateNumbers":
+//       character = generateNumbers();
+//       break;
+//     case "generateSpecial":
+//       character = generateSpecial();
+//       break;
+//   }
+//   pwComplete += character;
+// }
+
 /**HELP -- iterating through the variables to get final password
  * 
- * var getPassword = function() {
- * let pwComplete = "";
- * var pwUppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
- * var pwLowercase = "abcdefghijklmnopqrstuvwxyz";
- * var pwNumbers = '0123456789';
- * var pwSpecial = "!#$%&'()*+,-./:;<=>?@[^_`{|}~"";
  * 
- * var ?? = pwUppercase[Math.floor(Math.random() * lengthQuestion.length)]
+ * 
+ *  
+ * 
+ * 
  * var ?? = pwLowercase[Math.floor(Math.random() * lengthQuestion.length)]
  * var ?? = pwNumbers[Math.floor(Math.random() * lengthQuestion.length)]
  * var ?? = pwSpecial[Math.floor(Math.random() * lengthQuestion.length)]
@@ -134,6 +181,8 @@ var getSpecial = function() {
  * return pwComplete;
  * 
  */
+
+
 
 /**
  * PSUEDOCODE
@@ -161,3 +210,35 @@ var getSpecial = function() {
  * generatePassword then prints the generated password into the textarea
  */
 
+  // else if (uppercaseQuestion === "yes" && 
+  //     lowercaseQuestion === "yes" &&
+  //     numberQuestion === "yes") {
+  //       userPick = allUppercase.concat(allLowercase, allNumbers);
+  // }
+  // else if (uppercaseQuestion === "yes" && 
+  //     lowercaseQuestion === "yes" &&
+  //     numberQuestion === "yes" &&
+  //     specialQuestion === "yes") {
+  //       userPick = allUppercase.concat(allLowercase, allNumbers, allSpecial);
+  // }
+  // else if (uppercaseQuestion === "yes" && 
+  //     lowercaseQuestion === "yes" &&
+  //     numberQuestion === "yes" &&
+  //     specialQuestion === "yes") {
+  //       userPick = allUppercase.concat(allLowercase, allNumbers, allSpecial);
+  // }
+  // if (uppercaseQuestion === "yes" && 
+  //     lowercaseQuestion === "yes" &&
+  //     numberQuestion === "yes" &&
+  //     specialQuestion === "yes") {
+  //       userPick = allUppercase.concat(allLowercase, allNumbers, allSpecial);
+  // }
+  // if (uppercaseQuestion === "yes" && 
+  //     lowercaseQuestion === "yes" &&
+  //     numberQuestion === "yes" &&
+  //     specialQuestion === "yes") {
+  //       userPick = allUppercase.concat(allLowercase, allNumbers, allSpecial);
+  // }
+  
+  //alert("Your password has been generated.");
+  //return getPassword(); *console.log to help
