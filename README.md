@@ -1,4 +1,4 @@
-# Password Generator Starter Code
+# Password Generator
 
 In this challenge, we were asked to complete the starter code to create a Password Generator. The Password Generator should ask the user how many characters they would like in their password and if they would like uppercase, lowercase, numerical, and/or special characters.
 
