@@ -2,7 +2,7 @@
 
 In this challenge, we were asked to complete the starter code to create a Password Generator. The Password Generator should ask the user how many characters they would like in their password and if they would like uppercase, lowercase, numerical, and/or special characters.
 
-The following Password Generator I created can be found here: https://github.com/eeleelksm/eeleelksm.challenge3
+The following Password Generator I created can be found here: https://eeleelksm.github.io/eeleelksm.challenge3/
 
 # Screenshots
 When the user navigates to the page, they should see the following page.
