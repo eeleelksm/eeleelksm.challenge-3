@@ -25,7 +25,7 @@ var uppercaseQuestion;
 var lowercaseQuestion;
 var numberQuestion;
 var specialQuestion;
-var userPick;
+var userPick = [];
 var finaluserPick;
 
 var generatePassword = function() {
@@ -39,76 +39,28 @@ var generatePassword = function() {
   getNumbers();
   getSpecial();
 
+  var userPick = []
   //based on user's choice for password characters, creates the password
-  if (uppercaseQuestion === "yes" && 
-      lowercaseQuestion === "yes" &&
-      numberQuestion === "yes" &&
-      specialQuestion === "yes") {
-        userPick = allUppercase.concat(allLowercase, allNumbers, allSpecial);
-  }
-  if (uppercaseQuestion === "yes" && 
-      lowercaseQuestion === "yes" &&
-      numberQuestion === "yes") {
-      userPick = allUppercase.concat(allLowercase, allNumbers);
-  }
-  if (uppercaseQuestion === "yes" && 
-      lowercaseQuestion === "yes") {
-      userPick = allUppercase.concat(allLowercase);
-  }
-  if (lowercaseQuestion === "yes" && 
-      numberQuestion === "yes" &&
-      specialQuestion === "yes") {
-      userPick = allLowercase.concat(allNumbers, allSpecial);
-  }
-  if (lowercaseQuestion === "yes" && 
-      numberQuestion === "yes") {
-      userPick = allLowercase.concat(allNumbers);
-  }
-  if (numberQuestion === "yes" &&
-      uppercaseQuestion === "yes" &&
-      specialQuestion === "yes") {
-      userPick = allNumbers.concat(allUppercase, allSpecial);
-  }
-  if (numberQuestion === "yes" &&
-      specialQuestion === "yes") {
-      userPick = allNumbers.concat(allSpecial);
-  }
-  if (numberQuestion === "yes" && 
-      uppercaseQuestion === "yes") {
-      userPick = allNumbers.concat(allUppercase);
-  }
-  if (specialQuestion === "yes" &&
-      uppercaseQuestion === "yes"&& 
-      lowercaseQuestion === "yes") {
-      userPick = allSpecial.concat(allUppercase, allLowercase);
-  }
-  if (specialQuestion === "yes" &&
-      uppercaseQuestion === "yes") {
-      userPick = allSpecial.concat(allUppercase);
-  }
-  if (specialQuestion === "yes" &&
-      lowercaseQuestion === "yes") {
-      userPick = allSpecial.concat(allLowercase);
-  }
   if (uppercaseQuestion === "yes") {
-      userPick = allUppercase;
+        userPick = userPick.concat(allUppercase);
   }
   if (lowercaseQuestion === "yes") {
-      userPick = allLowercase;
+      userPick = userPick.concat(allLowercase);
   }
   if (numberQuestion === "yes") {
-      userPick = allNumbers;
+      userPick = userPick.concat(allNumbers);
   }
   if (specialQuestion === "yes") {
-      userPick = allSpecial;
+      userPick = userPick.concat(allSpecial);
   }
+
   if (uppercaseQuestion === "no" && 
       lowercaseQuestion === "no" &&
       numberQuestion === "no" &&
       specialQuestion === "no") {
       alert("You must select a choice of characters for your password.\n Please try again.");
       generatePassword();
-  }
+  };
 
   //based on the user's length choice, goes through each array to "push" the random
   //selections into an empty set
@@ -118,7 +70,7 @@ var generatePassword = function() {
   } 
   //joins the array and removing commas
   getPassword = getPassword.join("");
-  alert("Your password has been generated.");
+  alert("Your password has been generated.\n Please refresh the page if you'd like a new password!");
   return getPassword;
 }
 
@@ -196,7 +148,7 @@ var getSpecial = function() {
   //asks if they'd like special characters in password, yes or no
   specialQuestion = prompt("Would you like special characters in your password?\n Please type 'YES' or 'NO'");
   specialQuestion = specialQuestion.toLowerCase();
-  
+
   //if yes, window alert says special characters has been added
   if (specialQuestion === "yes") {
     alert("Special characters have been added to your password.");
