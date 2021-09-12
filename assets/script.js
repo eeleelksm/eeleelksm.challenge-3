@@ -171,10 +171,6 @@ var getLowercase = function() {
     alert("Invalid entry. Please try again.");
     getLowercase();
   }
-  // if (getLowercase === null) {
-  //   alert("Invalid entry. Please try again.");
-  //   getLowercase();
-  }
 }
 
 var getNumbers = function() {
