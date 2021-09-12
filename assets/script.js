@@ -15,16 +15,18 @@ generateBtn.addEventListener("click", writePassword);
 
 allUppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 allLowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-allNumbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+allNumbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 allSpecial = ["!", "#", "$", "%", "&", "()", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "^", ":", "_", "`", "{", "|", "}", "~"];
 
+//making variables called in the functions global
 var getPassword = [];
-var lengthQuestion;
+var passwordLength;
 var uppercaseQuestion;
 var lowercaseQuestion;
 var numberQuestion;
 var specialQuestion;
 var userPick;
+var finaluserPick;
 
 
 var generatePassword = function() {//returning the password -- example: return "superSecretPassword"; //prints in the textarea
@@ -32,31 +34,101 @@ var generatePassword = function() {//returning the password -- example: return "
   document.getElementById("generate").innerHTML=
   alert("Welcome to the Password Generator!");
 
+  //run each function to get the responses to each password question
   getPasswordLength();
   getUppercase();
   getLowercase();
   getNumbers();
   getSpecial();
 
+  //based on user's choice for password characters, creates the password
   if (uppercaseQuestion === "yes" && 
       lowercaseQuestion === "yes" &&
       numberQuestion === "yes" &&
       specialQuestion === "yes") {
         userPick = allUppercase.concat(allLowercase, allNumbers, allSpecial);
   }
+  if (uppercaseQuestion === "yes" && 
+      lowercaseQuestion === "yes" &&
+      numberQuestion === "yes") {
+      userPick = allUppercase.concat(allLowercase, allNumbers);
+  }
+  if (uppercaseQuestion === "yes" && 
+      lowercaseQuestion === "yes") {
+      userPick = allUppercase.concat(allLowercase);
+  }
+  if (lowercaseQuestion === "yes" && 
+      numberQuestion === "yes" &&
+      specialQuestion === "yes") {
+      userPick = allLowercase.concat(allNumbers, allSpecial);
+  }
+  if (lowercaseQuestion === "yes" && 
+      numberQuestion === "yes") {
+      userPick = allLowercase.concat(allNumbers);
+  }
+  if (numberQuestion === "yes" &&
+      uppercaseQuestion === "yes" &&
+      specialQuestion === "yes") {
+      userPick = allNumbers.concat(allUppercase, allSpecial);
+  }
+  if (numberQuestion === "yes" &&
+      specialQuestion === "yes") {
+      userPick = allNumbers.concat(allSpecial);
+  }
+  if (numberQuestion === "yes" && 
+      uppercaseQuestion === "yes") {
+      userPick = allNumbers.concat(allUppercase);
+  }
+  if (specialQuestion === "yes" &&
+      uppercaseQuestion === "yes"&& 
+      lowercaseQuestion === "yes") {
+      userPick = allSpecial.concat(allUppercase, allLowercase);
+  }
+  if (specialQuestion === "yes" &&
+      uppercaseQuestion === "yes") {
+      userPick = allSpecial.concat(allUppercase);
+  }
+  if (specialQuestion === "yes" &&
+      lowercaseQuestion === "yes") {
+      userPick = allSpecial.concat(allLowercase);
+  }
+  if (uppercaseQuestion === "yes") {
+      userPick = allUppercase;
+  }
+  if (lowercaseQuestion === "yes") {
+      userPick = allLowercase;
+  }
+  if (numberQuestion === "yes") {
+      userPick = allNumbers;
+  }
+  if (specialQuestion === "yes") {
+      userPick = allSpecial;
+  }
+  if (uppercaseQuestion === "no" && 
+      lowercaseQuestion === "no" &&
+      numberQuestion === "no" &&
+      specialQuestion === "no") {
+      alert("You must select a choice of characters for your password. Please try again.");
+      generatePassword();
+  }
 
-  for (var i = 0; i <= lengthQuestion.length; i++) {
-    var finaluserPick = userPick[Math.floor(Math.random() * userPick.length)]
+  //based on the user's length choice, goes through each array to "push" the random
+  //selections into an empty set
+  for (var i = 0; i < passwordLength; i++) {
+    finaluserPick = userPick[Math.floor(Math.random() * userPick.length)];
     getPassword.push(finaluserPick);
   }
+  //joins the array and removing commas
+  getPassword = getPassword.join("");
+  alert("Your password has been generated.");
   return getPassword;
 }
 
 var getPasswordLength = function() {
   //window prompt asks how many characters for the password
   //window mentions must be between 8 and 128 characters
-  lengthQuestion = prompt("How many characters would you like in your password? Choose a length of at least 8 characters and no more than 128 characters.");
-  passwordLength = parseInt(lengthQuestion);
+  passwordLength = prompt("How many characters would you like in your password? Choose a length of at least 8 characters and no more than 128 characters.");
+  passwordLength = parseInt(passwordLength);
 
   //if passwordLength is 8-128 and a number, window tells you # of characters
   //if passwordLength does not follow this, alert message to try again
